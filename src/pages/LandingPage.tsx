@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 declare global {
@@ -90,120 +90,219 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   );
 }
 
+const demoTabs = [
+  {
+    id: 'dashboard',
+    label: 'Pasqyra',
+    icon: Building2,
+    title: 'Pasqyra e Plotë',
+    desc: 'Shikoni statistikat, bizneset aktive, inspektimet e fundit dhe mospërputhjet — gjithçka në një vend.',
+    mockup: [
+      { label: 'Biznese Aktive', value: '24', color: '#1a5c35' },
+      { label: 'Inspektime Këtë Muaj', value: '12', color: '#2d7a4f' },
+      { label: 'Mospërputhje Hapur', value: '5', color: '#d97706' },
+      { label: 'Raporte të Gjeneruara', value: '48', color: '#1a5c35' },
+    ],
+  },
+  {
+    id: 'inspection',
+    label: 'Inspektimi',
+    icon: ClipboardCheck,
+    title: 'Inspektim Hap pas Hapi',
+    desc: 'Plotësoni inspektimin me 7 hapa — nga mjedisi tek temperaturat, stafi, dokumentat dhe mospërputhjet.',
+    steps: ['Të dhënat', 'Mjedisi', 'Temperaturat', 'Stafi', 'Dokumentat', 'NC', 'Përfundimi'],
+  },
+  {
+    id: 'report',
+    label: 'Raporti AI',
+    icon: Brain,
+    title: 'Raport i Gjeneruar me AI',
+    desc: 'Klikoni një buton dhe AI gjeneron raport profesional të plotë bazuar në të dhënat e inspektimit.',
+    reportLines: [
+      'PËRMBLEDHJE EKZEKUTIVE',
+      'Biznesi paraqet nivel mesatar rreziku. Temperaturat janë brenda normës...',
+      'GJETJET KRYESORE',
+      '1. Dokumentacioni HACCP është i plotë dhe i përditësuar',
+      '2. Temperaturat e ruajtjes — brenda normës (2-4°C)',
+      '3. Higjiene e përgjithshme — nivel i mirë',
+      'REKOMANDIMET',
+      '• Përditësoni certifikatën e kontrollit të dëmtuesve',
+      '• Trajnimi i stafit — brenda 30 ditëve',
+    ],
+  },
+];
+
+function ProductDemo() {
+  const [activeTab, setActiveTab] = useState('dashboard');
+  const active = demoTabs.find((t) => t.id === activeTab)!;
+  const Icon = active.icon;
+
+  return (
+    <div className="reveal">
+      {/* Tab buttons */}
+      <div className="flex justify-center gap-2 mb-10 flex-wrap">
+        {demoTabs.map((tab) => {
+          const TabIcon = tab.icon;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 border ${
+                activeTab === tab.id
+                  ? 'bg-[#1a5c35] text-white border-[#1a5c35] shadow-lg shadow-[#1a5c35]/20'
+                  : 'bg-white text-[#64748b] border-[#e2e8f0] hover:border-[#1a5c35]/30 hover:text-[#0f172a]'
+              }`}
+            >
+              <TabIcon size={16} /> {tab.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Demo window */}
+      <div className="bg-[#f8fafc] rounded-2xl border border-[#e2e8f0] overflow-hidden shadow-xl max-w-4xl mx-auto">
+        {/* Window chrome */}
+        <div className="bg-white border-b border-[#e2e8f0] px-4 py-3 flex items-center gap-3">
+          <div className="flex gap-1.5">
+            <div className="w-3 h-3 rounded-full bg-[#fca5a5]" />
+            <div className="w-3 h-3 rounded-full bg-[#fde68a]" />
+            <div className="w-3 h-3 rounded-full bg-[#86efac]" />
+          </div>
+          <div className="flex-1 flex justify-center">
+            <div className="px-4 py-1 bg-[#f8fafc] rounded-lg border border-[#e2e8f0] text-xs text-[#94a3b8] font-mono">
+              siguriushqimore.app/{active.id}
+            </div>
+          </div>
+        </div>
+
+        {/* Content area */}
+        <div className="p-6 md:p-8 min-h-[350px]">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-10 h-10 rounded-xl bg-[#f0f9f1] flex items-center justify-center">
+              <Icon size={20} className="text-[#1a5c35]" />
+            </div>
+            <div>
+              <h3 className="font-bold text-[#0f172a]">{active.title}</h3>
+              <p className="text-xs text-[#64748b]">{active.desc}</p>
+            </div>
+          </div>
+
+          {/* Dashboard mockup */}
+          {activeTab === 'dashboard' && active.mockup && (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {active.mockup.map((item, i) => (
+                <div key={i} className="bg-white rounded-xl border border-[#e2e8f0] p-4 text-center">
+                  <p className="text-2xl md:text-3xl font-bold mb-1" style={{ color: item.color }}>{item.value}</p>
+                  <p className="text-xs text-[#64748b] font-medium">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Inspection mockup */}
+          {activeTab === 'inspection' && active.steps && (
+            <div>
+              <div className="flex items-center gap-1 mb-6 overflow-x-auto pb-2">
+                {active.steps.map((step, i) => (
+                  <div key={step} className="flex items-center shrink-0">
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
+                      i <= 2 ? 'bg-[#1a5c35] text-white' : 'bg-[#e2e8f0] text-[#64748b]'
+                    }`}>
+                      {i <= 2 ? <CheckCircle size={14} /> : i + 1}
+                    </div>
+                    <span className="text-[10px] font-medium text-[#64748b] mx-1 hidden sm:inline">{step}</span>
+                    {i < active.steps.length - 1 && <div className={`w-6 h-0.5 mx-1 ${i < 2 ? 'bg-[#1a5c35]' : 'bg-[#e2e8f0]'}`} />}
+                  </div>
+                ))}
+              </div>
+              <div className="bg-white rounded-xl border border-[#e2e8f0] p-5 space-y-4">
+                <p className="text-sm font-semibold text-[#0f172a]">Temperaturat e Ruajtjes</p>
+                {[
+                  { name: 'Frigorifer Kryesor', temp: '3.2°C', range: '0-4°C', ok: true },
+                  { name: 'Ngrirësi', temp: '-18.5°C', range: '-22 to -18°C', ok: true },
+                  { name: 'Vitrinë Ekspozimi', temp: '7.1°C', range: '0-5°C', ok: false },
+                ].map((t) => (
+                  <div key={t.name} className="flex items-center justify-between py-2 border-b border-[#f1f5f9] last:border-0">
+                    <span className="text-sm text-[#0f172a]">{t.name}</span>
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs text-[#94a3b8]">{t.range}</span>
+                      <span className={`text-sm font-bold ${t.ok ? 'text-[#16a34a]' : 'text-[#dc2626]'}`}>{t.temp}</span>
+                      <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${t.ok ? 'bg-[#f0fdf4] text-[#16a34a]' : 'bg-[#fef2f2] text-[#dc2626]'}`}>
+                        {t.ok ? 'OK' : 'Jashtë'}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Report mockup */}
+          {activeTab === 'report' && active.reportLines && (
+            <div className="bg-white rounded-xl border border-[#e2e8f0] p-5 font-mono text-xs space-y-1.5 max-h-[260px] overflow-y-auto">
+              {active.reportLines.map((line, i) => (
+                <p key={i} className={line === line.toUpperCase() && line.length > 3 ? 'font-bold text-[#1a5c35] text-sm mt-3 first:mt-0' : 'text-[#64748b] pl-2'}>
+                  {line}
+                </p>
+              ))}
+              <div className="mt-4 pt-3 border-t border-[#e2e8f0] flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-[#16a34a] animate-pulse" />
+                <span className="text-[#16a34a] font-sans text-xs font-medium">Raporti u gjenerua me sukses</span>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Main Page ──────────────────────────────────────────
 
 export function LandingPage() {
   const mainRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({ businessName: '', type: 'Furrë', city: '', name: '', phone: '', email: '', message: '' });
 
-  // GSAP animations
-  useLayoutEffect(() => {
+  // GSAP — floating icons + mouse parallax only
+  useEffect(() => {
     const gsap = window.gsap;
-    const ScrollTrigger = window.ScrollTrigger;
-    if (!gsap || !ScrollTrigger || !mainRef.current) return;
+    if (!gsap) return;
 
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      // ── Floating icons bobbing ──
-      gsap.utils.toArray('.float-icon').forEach((icon: any, i: number) => {
-        gsap.to(icon, {
-          y: -15,
-          rotation: i % 2 === 0 ? 3 : -3,
-          duration: 2 + i * 0.5,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut',
-          delay: i * 0.2,
-        });
+    // Floating icons bobbing
+    const floatIcons = document.querySelectorAll('.float-icon');
+    floatIcons.forEach((icon, i) => {
+      gsap.to(icon, {
+        y: -15,
+        rotation: i % 2 === 0 ? 3 : -3,
+        duration: 2 + i * 0.5,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: i * 0.2,
       });
+    });
 
-      // ── Mouse parallax on hero ──
-      const handleMouseMove = (e: MouseEvent) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 20;
-        const y = (e.clientY / window.innerHeight - 0.5) * 20;
-        gsap.to('.hero-parallax', { x, y, duration: 1, ease: 'power2.out' });
-        gsap.to('.float-icon', { x: -x * 1.5, y: -y * 1.5, duration: 1.5, ease: 'power2.out', overwrite: 'auto' });
-      };
-      window.addEventListener('mousemove', handleMouseMove);
+    // Mouse parallax on hero
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      gsap.to('.hero-parallax', { x, y, duration: 1, ease: 'power2.out' });
+      gsap.to('.float-icon', { x: -x * 1.5, y: -y * 1.5, duration: 1.5, ease: 'power2.out', overwrite: 'auto' });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
-      // ── Scroll-triggered sections ──
-      const revealSections = gsap.utils.toArray('.gsap-reveal');
-      revealSections.forEach((section: any) => {
-        gsap.from(section, {
-          scrollTrigger: { trigger: section, start: 'top 85%', once: true },
-          y: 50,
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-        });
-      });
-
-      // ── Feature cards stagger ──
-      ScrollTrigger.create({
-        trigger: '#features .grid',
-        start: 'top 80%',
-        once: true,
-        onEnter: () => {
-          gsap.from('.feature-card', { y: 60, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' });
-        },
-      });
-
-      // ── Steps stagger ──
-      ScrollTrigger.create({
-        trigger: '#steps .grid',
-        start: 'top 80%',
-        once: true,
-        onEnter: () => {
-          gsap.from('.step-card', { x: -40, opacity: 0, duration: 0.7, stagger: 0.2, ease: 'power2.out' });
-        },
-      });
-
-      // ── Stats counter-like reveal ──
-      ScrollTrigger.create({
-        trigger: '#stats',
-        start: 'top 80%',
-        once: true,
-        onEnter: () => {
-          gsap.from('.stat-item', { y: 30, opacity: 0, scale: 0.9, duration: 0.6, stagger: 0.12, ease: 'back.out(1.7)' });
-        },
-      });
-
-      // ── FAQ items stagger ──
-      ScrollTrigger.create({
-        trigger: '#faq .space-y-3',
-        start: 'top 85%',
-        once: true,
-        onEnter: () => {
-          gsap.from('.faq-item', { y: 20, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out' });
-        },
-      });
-
-      // ── Contact section ──
-      ScrollTrigger.create({
-        trigger: '#contact',
-        start: 'top 80%',
-        once: true,
-        onEnter: () => {
-          gsap.from('.contact-left > *', { x: -30, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power2.out' });
-          gsap.from('.contact-form', { x: 30, opacity: 0, duration: 0.8, ease: 'power2.out', delay: 0.2 });
-        },
-      });
-
-      // ── Compliance badges ──
-      ScrollTrigger.create({
-        trigger: '#compliance .grid',
-        start: 'top 85%',
-        once: true,
-        onEnter: () => {
-          gsap.from('.compliance-item', { y: 20, opacity: 0, duration: 0.5, stagger: 0.1, ease: 'power2.out' });
-        },
-      });
-
-      return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, mainRef.current);
-
-    return () => ctx.revert();
+  // Simple CSS scroll reveal (no GSAP)
+  useEffect(() => {
+    const el = mainRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target); } }),
+      { threshold: 0.15 }
+    );
+    el.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -302,14 +401,14 @@ export function LandingPage() {
       {/* ─── Features ─── */}
       <section id="features" className="py-24 md:py-32 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="gsap-reveal text-center mb-16">
+          <div className="reveal text-center mb-16">
             <p className="text-sm font-semibold text-[#1a5c35] tracking-wider uppercase mb-3">Veçoritë</p>
             <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-4">Gjithçka që ju nevojitet</h2>
             <p className="text-[#64748b] max-w-xl mx-auto">Nga inspektimi deri te raporti final — një platformë e vetme për të gjithë procesin HACCP.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f, i) => (
-              <div key={f.title} className="feature-card group p-6 rounded-2xl border border-[#e2e8f0] bg-white hover:border-[#1a5c35]/30 hover:shadow-lg hover:shadow-[#1a5c35]/5 transition-all duration-300" >
+              <div key={f.title} className="reveal feature-card group p-6 rounded-2xl border border-[#e2e8f0] bg-white hover:border-[#1a5c35]/30 hover:shadow-lg hover:shadow-[#1a5c35]/5 transition-all duration-300" >
                 <div className="w-12 h-12 rounded-xl bg-[#f0f9f1] flex items-center justify-center mb-4 group-hover:bg-[#1a5c35] transition-colors duration-300">
                   <f.icon size={22} className="text-[#1a5c35] group-hover:text-white transition-colors duration-300" />
                 </div>
@@ -324,14 +423,14 @@ export function LandingPage() {
       {/* ─── How It Works ─── */}
       <section id="steps" className="py-24 md:py-32 bg-[#f8fafc]">
         <div className="max-w-5xl mx-auto px-6">
-          <div className="gsap-reveal text-center mb-16">
+          <div className="reveal text-center mb-16">
             <p className="text-sm font-semibold text-[#1a5c35] tracking-wider uppercase mb-3">Si Funksionon</p>
             <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-4">Tre hapa të thjeshtë</h2>
             <p className="text-[#64748b] max-w-xl mx-auto">Procesi i inspektimit i thjeshtëzuar dhe i automatizuar nga fillimi deri në fund.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map((s, i) => (
-              <div key={s.num} className="step-card relative">
+              <div key={s.num} className="reveal step-card relative">
                 <div className="bg-white rounded-2xl p-8 border border-[#e2e8f0] h-full">
                   <span className="text-5xl font-bold text-[#1a5c35]/10 block mb-4">{s.num}</span>
                   <h3 className="text-lg font-semibold text-[#0f172a] mb-2">{s.title}</h3>
@@ -348,12 +447,25 @@ export function LandingPage() {
         </div>
       </section>
 
+      {/* ─── Product Demo ─── */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="reveal text-center mb-16">
+            <p className="text-sm font-semibold text-[#1a5c35] tracking-wider uppercase mb-3">Brenda Platformës</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-4">Shikoni si funksionon</h2>
+            <p className="text-[#64748b] max-w-xl mx-auto">Një pamje e shpejtë e mjeteve kryesore që platforma ofron.</p>
+          </div>
+
+          <ProductDemo />
+        </div>
+      </section>
+
       {/* ─── Stats ─── */}
       <section id="stats" className="py-20 bg-[#1a5c35]">
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((s, i) => (
-              <div key={s.label} className="stat-item text-center">
+              <div key={s.label} className="reveal stat-item text-center">
                 <p className="text-3xl md:text-4xl font-bold text-white mb-1">{s.value}</p>
                 <p className="text-sm text-white/70 font-medium">{s.label}</p>
               </div>
@@ -365,13 +477,13 @@ export function LandingPage() {
       {/* ─── Compliance ─── */}
       <section id="compliance" className="py-24 md:py-32 bg-white">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="gsap-reveal text-center mb-12">
+          <div className="reveal text-center mb-12">
             <p className="text-sm font-semibold text-[#1a5c35] tracking-wider uppercase mb-3">Përputhshmëria</p>
             <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-4">Në përputhje me standardet</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {['Rregullore HACCP Kombëtare', 'Standarde Europiane të Sigurisë Ushqimore', 'Dokumentacion i Plotë Inspektimi'].map((item, i) => (
-              <div key={item} className="compliance-item flex items-start gap-3 p-5 rounded-xl bg-[#f0f9f1] border border-[#1a5c35]/10">
+              <div key={item} className="reveal compliance-item flex items-start gap-3 p-5 rounded-xl bg-[#f0f9f1] border border-[#1a5c35]/10">
                 <CheckCircle size={20} className="text-[#1a5c35] mt-0.5 shrink-0" />
                 <p className="text-sm font-medium text-[#0f172a]">{item}</p>
               </div>
@@ -383,7 +495,7 @@ export function LandingPage() {
       {/* ─── FAQ ─── */}
       <section id="faq" className="py-24 md:py-32 bg-[#f8fafc]">
         <div className="max-w-3xl mx-auto px-6">
-          <div className="gsap-reveal text-center mb-12">
+          <div className="reveal text-center mb-12">
             <p className="text-sm font-semibold text-[#1a5c35] tracking-wider uppercase mb-3">Pyetje të Shpeshta</p>
             <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-4">Keni pyetje?</h2>
           </div>
