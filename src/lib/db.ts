@@ -37,7 +37,7 @@ export async function initializeDefaults() {
         bio: '',
       },
       company: {
-        name: 'SiguriUshqimore HACCP',
+        name: 'FoodSafeConsulting HACCP',
         email: '',
         phone: '',
         address: 'Shqipëri',

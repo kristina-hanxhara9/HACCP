@@ -170,7 +170,7 @@ function ProductDemo() {
           </div>
           <div className="flex-1 hidden sm:flex justify-center">
             <div className="px-4 py-1 bg-[#f8fafc] rounded-lg border border-[#e2e8f0] text-xs text-[#94a3b8] font-mono">
-              siguriushqimore.app/{active.id}
+              foodsafeconsulting.app/{active.id}
             </div>
           </div>
         </div>
@@ -326,7 +326,7 @@ export function LandingPage() {
               <Shield size={20} className="text-white" />
             </div>
             <div>
-              <p className="text-sm font-bold text-[#0f172a] leading-tight">SiguriUshqimore</p>
+              <p className="text-sm font-bold text-[#0f172a] leading-tight">FoodSafeConsulting</p>
               <p className="text-[9px] font-medium text-[#64748b] tracking-wider uppercase">HACCP Platform</p>
             </div>
           </div>
@@ -635,9 +635,9 @@ export function LandingPage() {
             <div className="w-7 h-7 rounded-md bg-[#1a5c35] flex items-center justify-center">
               <Shield size={14} className="text-white" />
             </div>
-            <p className="text-sm font-semibold text-[#0f172a]">SiguriUshqimore HACCP</p>
+            <p className="text-sm font-semibold text-[#0f172a]">FoodSafeConsulting HACCP</p>
           </div>
-          <p className="text-xs text-[#94a3b8]">&copy; {new Date().getFullYear()} SiguriUshqimore HACCP. Të gjitha të drejtat e rezervuara.</p>
+          <p className="text-xs text-[#94a3b8]">&copy; {new Date().getFullYear()} FoodSafeConsulting HACCP. Të gjitha të drejtat e rezervuara.</p>
         </div>
       </footer>
     </div>

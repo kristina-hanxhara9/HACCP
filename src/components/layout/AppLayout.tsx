@@ -17,7 +17,7 @@ export function AppLayout() {
           <button onClick={() => setSidebarOpen(true)} className="p-1.5 text-[#64748b]">
             <Menu size={22} />
           </button>
-          <span className="ml-3 text-sm font-bold text-[#0f172a]">SiguriUshqimore HACCP</span>
+          <span className="ml-3 text-sm font-bold text-[#0f172a]">FoodSafeConsulting HACCP</span>
         </header>
       )}
 

@@ -50,7 +50,7 @@ export function Sidebar() {
                 <Shield size={20} className="text-white" />
               </div>
               <div>
-                <p className="text-sm font-bold text-[#0f172a] leading-tight">SiguriUshqimore</p>
+                <p className="text-sm font-bold text-[#0f172a] leading-tight">FoodSafeConsulting</p>
                 <p className="text-[10px] font-medium text-[#64748b] tracking-wider uppercase">HACCP Platform</p>
               </div>
             </div>

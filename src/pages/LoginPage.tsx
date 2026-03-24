@@ -47,7 +47,7 @@ export function LoginPage() {
           <div className="w-16 h-16 rounded-2xl bg-[#1a5c35] flex items-center justify-center mx-auto mb-4 shadow-lg">
             <Shield size={32} className="text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-[#0f172a]">SiguriUshqimore</h1>
+          <h1 className="text-2xl font-bold text-[#0f172a]">FoodSafeConsulting</h1>
           <p className="text-xs font-medium text-[#64748b] tracking-widest uppercase mt-1">HACCP Platform</p>
         </div>
 
@@ -93,7 +93,7 @@ export function LoginPage() {
         </div>
 
         <p className="text-center text-xs text-[#94a3b8] mt-6">
-          &copy; {new Date().getFullYear()} SiguriUshqimore HACCP. Të gjitha të drejtat e rezervuara.
+          &copy; {new Date().getFullYear()} FoodSafeConsulting HACCP. Të gjitha të drejtat e rezervuara.
         </p>
       </div>
     </div>

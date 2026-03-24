@@ -214,7 +214,7 @@ export function ReportViewPage() {
                 <span className="text-white font-bold text-xl">S</span>
               </div>
               <div className="text-left">
-                <p className="text-xl font-bold text-[#0f172a]">{settings?.company.name || 'SiguriUshqimore HACCP'}</p>
+                <p className="text-xl font-bold text-[#0f172a]">{settings?.company.name || 'FoodSafeConsulting HACCP'}</p>
               </div>
             </div>
             <h2 className="text-2xl font-bold text-[#0f172a]">RAPORT INSPEKTIMI HIGJIENIK</h2>
