@@ -78,13 +78,13 @@ const businessTypes = [
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="faq-item border border-[#e2e8f0] rounded-xl overflow-hidden">
-      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-5 text-left hover:bg-[#f8fafc] transition-colors">
-        <span className="text-sm font-semibold text-[#0f172a] pr-4">{q}</span>
-        <ChevronDown size={18} className={`text-[#64748b] shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
+    <div className="faq-item border border-white/20 rounded-xl overflow-hidden bg-white/10 backdrop-blur-sm">
+      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-5 text-left hover:bg-white/5 transition-colors">
+        <span className="text-sm font-semibold text-white pr-4">{q}</span>
+        <ChevronDown size={18} className={`text-white/60 shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
       </button>
       <div className={`overflow-hidden transition-all duration-300 ${open ? 'max-h-40 pb-5 px-5' : 'max-h-0'}`}>
-        <p className="text-sm text-[#64748b] leading-relaxed">{a}</p>
+        <p className="text-sm text-white/70 leading-relaxed">{a}</p>
       </div>
     </div>
   );
@@ -421,24 +421,24 @@ export function LandingPage() {
       </section>
 
       {/* ─── How It Works ─── */}
-      <section id="steps" className="py-24 md:py-32 bg-[#f8fafc]">
+      <section id="steps" className="py-24 md:py-32 bg-[#1a5c35]">
         <div className="max-w-5xl mx-auto px-6">
           <div className="reveal text-center mb-16">
-            <p className="text-sm font-semibold text-[#1a5c35] tracking-wider uppercase mb-3">Si Funksionon</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-4">Tre hapa të thjeshtë</h2>
-            <p className="text-[#64748b] max-w-xl mx-auto">Procesi i inspektimit i thjeshtëzuar dhe i automatizuar nga fillimi deri në fund.</p>
+            <p className="text-sm font-semibold text-white/60 tracking-wider uppercase mb-3">Si Funksionon</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Tre hapa të thjeshtë</h2>
+            <p className="text-white/70 max-w-xl mx-auto">Procesi i inspektimit i thjeshtëzuar dhe i automatizuar nga fillimi deri në fund.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {steps.map((s, i) => (
               <div key={s.num} className="reveal step-card relative">
-                <div className="bg-white rounded-2xl p-8 border border-[#e2e8f0] h-full">
-                  <span className="text-5xl font-bold text-[#1a5c35]/10 block mb-4">{s.num}</span>
-                  <h3 className="text-lg font-semibold text-[#0f172a] mb-2">{s.title}</h3>
-                  <p className="text-sm text-[#64748b] leading-relaxed">{s.desc}</p>
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 h-full">
+                  <span className="text-5xl font-bold text-white/15 block mb-4">{s.num}</span>
+                  <h3 className="text-lg font-semibold text-white mb-2">{s.title}</h3>
+                  <p className="text-sm text-white/70 leading-relaxed">{s.desc}</p>
                 </div>
                 {i < steps.length - 1 && (
                   <div className="hidden md:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                    <ChevronRight size={24} className="text-[#1a5c35]/30" />
+                    <ChevronRight size={24} className="text-white/30" />
                   </div>
                 )}
               </div>
@@ -493,11 +493,11 @@ export function LandingPage() {
       </section>
 
       {/* ─── FAQ ─── */}
-      <section id="faq" className="py-24 md:py-32 bg-[#f8fafc]">
+      <section id="faq" className="py-24 md:py-32 bg-[#1a5c35]">
         <div className="max-w-3xl mx-auto px-6">
           <div className="reveal text-center mb-12">
-            <p className="text-sm font-semibold text-[#1a5c35] tracking-wider uppercase mb-3">Pyetje të Shpeshta</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0f172a] mb-4">Keni pyetje?</h2>
+            <p className="text-sm font-semibold text-white/60 tracking-wider uppercase mb-3">Pyetje të Shpeshta</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Keni pyetje?</h2>
           </div>
           <div className="space-y-3">
             {faqs.map((faq) => (
