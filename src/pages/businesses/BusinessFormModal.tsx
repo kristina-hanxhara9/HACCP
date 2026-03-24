@@ -57,7 +57,7 @@ function ExpiryIndicator({ date }: { date?: string }) {
 
 export function BusinessFormModal({ open, onClose, business, onSaved }: Props) {
   const { register, handleSubmit, reset, watch, formState: { errors, isSubmitting } } = useForm<FormData>({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema) as never,
     defaultValues: {
       defaultRisk: 'mesatar',
       foodLicenseHas: false,

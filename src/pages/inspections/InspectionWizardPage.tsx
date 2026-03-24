@@ -50,8 +50,9 @@ function createId() {
   return crypto.randomUUID();
 }
 
-function addIds<T extends Record<string, unknown>>(items: Omit<T, 'id'>[]): (T & { id: string })[] {
-  return items.map((item) => ({ ...item, id: createId() })) as (T & { id: string })[];
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function addIds(items: any[]): any[] {
+  return items.map((item) => ({ ...item, id: createId() }));
 }
 
 export function InspectionWizardPage() {

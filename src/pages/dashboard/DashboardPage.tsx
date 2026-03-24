@@ -155,7 +155,7 @@ export function DashboardPage() {
                 <YAxis type="category" dataKey="name" width={80} tick={{ fontSize: 12, fill: '#64748b' }} />
                 <Tooltip
                   contentStyle={{ fontSize: 12, borderRadius: 8, border: '1px solid #e2e8f0' }}
-                  formatter={(value: number) => [`${value} inspektime`, '']}
+                  formatter={(value) => [`${value} inspektime`, '']}
                 />
                 <Bar dataKey="value" radius={[0, 6, 6, 0]} barSize={24}>
                   {riskChartData.map((entry, idx) => (
