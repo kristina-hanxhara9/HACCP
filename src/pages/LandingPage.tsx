@@ -37,8 +37,8 @@ import {
 
 const features = [
   { icon: ClipboardCheck, title: 'Inspektime Digjitale', desc: 'Kryeni inspektime të plota me lista kontrolli, temperatura dhe vlerësime mjedisi — gjithçka dixhitale.' },
-  { icon: Brain, title: 'Raporte me AI', desc: 'Gjeneroni raporte profesionale inspektimi me inteligjencë artificiale në sekonda.' },
-  { icon: AlertTriangle, title: 'Gjurmimi i NC', desc: 'Regjistroni dhe ndiqni mospërputhjet me afate, përgjegjës dhe veprime korrigjuese.' },
+  { icon: Brain, title: 'Raporte me Inteligjencë Artificiale', desc: 'Gjeneroni raporte profesionale inspektimi me inteligjencë artificiale në sekonda.' },
+  { icon: AlertTriangle, title: 'Gjurmimi i Mospërputhjeve', desc: 'Regjistroni dhe ndiqni mospërputhjet me afate, përgjegjës dhe veprime korrigjuese.' },
   { icon: Building2, title: 'Menaxhimi i Bizneseve', desc: 'Administroni të gjitha bizneset, licencat, certifikatat dhe historikun e inspektimeve.' },
   { icon: PenTool, title: 'Nënshkrim Dixhital', desc: 'Nënshkruani raportet dixhitalisht direkt nga platforma — pa letra, pa vonesa.' },
   { icon: Download, title: 'Eksport & Backup', desc: 'Eksportoni të dhënat në JSON, printoni raporte në PDF dhe mbani kopje sigurie.' },
@@ -53,7 +53,7 @@ const steps = [
 const stats = [
   { value: '100%', label: 'Digjitale' },
   { value: 'HACCP', label: 'Në Përputhje' },
-  { value: 'AI', label: 'Raporte Automatike' },
+  { value: 'AI', label: 'Inteligjencë Artificiale' },
   { value: '24/7', label: 'Akses i Plotë' },
 ];
 
@@ -78,13 +78,13 @@ const businessTypes = [
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="faq-item border border-white/20 rounded-xl overflow-hidden bg-white/10 backdrop-blur-sm">
-      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-5 text-left hover:bg-white/5 transition-colors">
-        <span className="text-sm font-semibold text-white pr-4">{q}</span>
-        <ChevronDown size={18} className={`text-white/60 shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
+    <div className="faq-item rounded-xl overflow-hidden bg-white shadow-sm">
+      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-5 text-left hover:bg-[#f8fafc] transition-colors">
+        <span className="text-sm font-semibold text-[#0f172a] pr-4">{q}</span>
+        <ChevronDown size={18} className={`text-[#1a5c35] shrink-0 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
       </button>
       <div className={`overflow-hidden transition-all duration-300 ${open ? 'max-h-40 pb-5 px-5' : 'max-h-0'}`}>
-        <p className="text-sm text-white/70 leading-relaxed">{a}</p>
+        <p className="text-sm text-[#64748b] leading-relaxed">{a}</p>
       </div>
     </div>
   );
@@ -168,7 +168,7 @@ function ProductDemo() {
             <div className="w-3 h-3 rounded-full bg-[#fde68a]" />
             <div className="w-3 h-3 rounded-full bg-[#86efac]" />
           </div>
-          <div className="flex-1 flex justify-center">
+          <div className="flex-1 hidden sm:flex justify-center">
             <div className="px-4 py-1 bg-[#f8fafc] rounded-lg border border-[#e2e8f0] text-xs text-[#94a3b8] font-mono">
               siguriushqimore.app/{active.id}
             </div>
@@ -466,8 +466,8 @@ export function LandingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((s, i) => (
               <div key={s.label} className="reveal stat-item text-center">
-                <p className="text-3xl md:text-4xl font-bold text-white mb-1">{s.value}</p>
-                <p className="text-sm text-white/70 font-medium">{s.label}</p>
+                <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1">{s.value}</p>
+                <p className="text-xs sm:text-sm text-white/70 font-medium">{s.label}</p>
               </div>
             ))}
           </div>
