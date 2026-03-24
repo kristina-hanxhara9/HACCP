@@ -200,13 +200,13 @@ export function BusinessListPage() {
                     <td className="px-4 py-3"><RiskBadge level={b.computedRisk} size="sm" /></td>
                     <td className="px-4 py-3">
                       <div className="flex items-center justify-end gap-1">
-                        <button onClick={() => navigate(`/businesses/${b.id}`)} className="p-1.5 rounded-lg hover:bg-[#f1f5f9] text-[#64748b]" title="Shiko">
+                        <button onClick={() => navigate(`/app/businesses/${b.id}`)} className="p-1.5 rounded-lg hover:bg-[#f1f5f9] text-[#64748b]" title="Shiko">
                           <Eye size={16} />
                         </button>
                         <button onClick={() => { setEditBusiness(b); setFormOpen(true); }} className="p-1.5 rounded-lg hover:bg-[#f1f5f9] text-[#64748b]" title="Ndrysho">
                           <Pencil size={16} />
                         </button>
-                        <button onClick={() => navigate(`/inspections/new?businessId=${b.id}`)} className="p-1.5 rounded-lg hover:bg-[#f0f9f1] text-[#1a5c35]" title="Inspektim i ri">
+                        <button onClick={() => navigate(`/app/inspections/new?businessId=${b.id}`)} className="p-1.5 rounded-lg hover:bg-[#f0f9f1] text-[#1a5c35]" title="Inspektim i ri">
                           <ClipboardPlus size={16} />
                         </button>
                         <button onClick={() => setDeleteId(b.id)} className="p-1.5 rounded-lg hover:bg-[#fef2f2] text-[#dc2626]" title="Fshi">
@@ -223,7 +223,7 @@ export function BusinessListPage() {
           {/* Mobile cards */}
           <div className="md:hidden divide-y divide-[#f1f5f9]">
             {filtered.map((b) => (
-              <div key={b.id} className="p-4" onClick={() => navigate(`/businesses/${b.id}`)}>
+              <div key={b.id} className="p-4" onClick={() => navigate(`/app/businesses/${b.id}`)}>
                 <div className="flex items-start justify-between mb-2">
                   <div>
                     <h3 className="font-semibold text-[#0f172a]">{b.name}</h3>

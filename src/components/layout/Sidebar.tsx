@@ -13,12 +13,12 @@ import {
 } from 'lucide-react';
 
 const navItems = [
-  { to: '/', icon: LayoutDashboard, label: 'Pasqyra' },
-  { to: '/businesses', icon: Building2, label: 'Bizneset' },
-  { to: '/inspections', icon: ClipboardCheck, label: 'Inspektimet' },
-  { to: '/nonconformances', icon: AlertTriangle, label: 'Mospërputhjet' },
-  { to: '/reports', icon: FileText, label: 'Raportet' },
-  { to: '/settings', icon: Settings, label: 'Cilësimet' },
+  { to: '/app', icon: LayoutDashboard, label: 'Pasqyra' },
+  { to: '/app/businesses', icon: Building2, label: 'Bizneset' },
+  { to: '/app/inspections', icon: ClipboardCheck, label: 'Inspektimet' },
+  { to: '/app/nonconformances', icon: AlertTriangle, label: 'Mospërputhjet' },
+  { to: '/app/reports', icon: FileText, label: 'Raportet' },
+  { to: '/app/settings', icon: Settings, label: 'Cilësimet' },
 ];
 
 export function Sidebar() {
@@ -76,7 +76,7 @@ export function Sidebar() {
                     : 'text-[#64748b] hover:bg-[#f8fafc] hover:text-[#0f172a]'
                 }`
               }
-              end={item.to === '/'}
+              end={item.to === '/app'}
             >
               <item.icon size={20} />
               {item.label}

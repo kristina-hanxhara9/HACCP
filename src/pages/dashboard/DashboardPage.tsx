@@ -255,7 +255,7 @@ export function DashboardPage() {
               return (
                 <div
                   key={biz.id}
-                  onClick={() => navigate(`/businesses/${biz.id}`)}
+                  onClick={() => navigate(`/app/businesses/${biz.id}`)}
                   className="bg-white rounded-xl border border-[#fecaca] p-4 cursor-pointer hover:shadow-md transition-shadow"
                 >
                   <div className="flex items-start justify-between mb-2">

@@ -53,7 +53,7 @@ export function InspectionListPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-[#0f172a]">Inspektimet</h1>
-        <Button icon={<Plus size={16} />} onClick={() => navigate('/inspections/new')}>
+        <Button icon={<Plus size={16} />} onClick={() => navigate('/app/inspections/new')}>
           Inspektim i Ri
         </Button>
       </div>
@@ -93,7 +93,7 @@ export function InspectionListPage() {
           description={search || typeFilter || statusFilter || riskFilter ? 'Nuk u gjet asnjë inspektim me këta filtra' : 'Krijoni inspektimin tuaj të parë'}
           action={
             !search && !typeFilter && !statusFilter && !riskFilter ? (
-              <Button icon={<Plus size={16} />} onClick={() => navigate('/inspections/new')}>Krijo inspektimin e parë</Button>
+              <Button icon={<Plus size={16} />} onClick={() => navigate('/app/inspections/new')}>Krijo inspektimin e parë</Button>
             ) : undefined
           }
         />
@@ -130,7 +130,7 @@ export function InspectionListPage() {
                     <td className="px-4 py-3"><RiskBadge level={ins.riskLevel as RiskLevel} size="sm" /></td>
                     <td className="px-4 py-3"><InspectionStatusBadge status={ins.status as InspectionStatus} /></td>
                     <td className="px-4 py-3 text-right">
-                      <button onClick={() => navigate(`/inspections/${ins.id}`)} className="p-1.5 rounded-lg hover:bg-[#f1f5f9] text-[#64748b]" title="Shiko/Ndrysho">
+                      <button onClick={() => navigate(`/app/inspections/${ins.id}`)} className="p-1.5 rounded-lg hover:bg-[#f1f5f9] text-[#64748b]" title="Shiko/Ndrysho">
                         <Eye size={16} />
                       </button>
                     </td>

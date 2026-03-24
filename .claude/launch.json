@@ -3,9 +3,12 @@
   "configurations": [
     {
       "name": "haccp-dev",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "port": 5173
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["node_modules/.bin/vite"],
+      "port": 5173,
+      "env": {
+        "PATH": "/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin"
+      }
     }
   ]
 }

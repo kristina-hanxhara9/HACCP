@@ -178,7 +178,7 @@ export function ReportViewPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between no-print">
         <div className="flex items-center gap-3">
-          <button onClick={() => navigate('/reports')} className="p-1.5 rounded-lg hover:bg-[#f1f5f9] text-[#64748b]">
+          <button onClick={() => navigate('/app/reports')} className="p-1.5 rounded-lg hover:bg-[#f1f5f9] text-[#64748b]">
             <ArrowLeft size={20} />
           </button>
           <h1 className="text-2xl font-bold text-[#0f172a]">Raporti {inspection.serialNumber}</h1>

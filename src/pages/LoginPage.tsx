@@ -26,7 +26,7 @@ export function LoginPage() {
       if (password === correctPassword) {
         setAuthenticated(true);
         toast.success('Mirësevini në platformë!');
-        navigate('/', { replace: true });
+        navigate('/app', { replace: true });
       } else {
         setError('Fjalëkalimi është i gabuar. Provoni përsëri.');
         setShake(true);

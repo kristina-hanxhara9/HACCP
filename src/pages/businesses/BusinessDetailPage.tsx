@@ -53,7 +53,7 @@ export function BusinessDetailPage() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <button onClick={() => navigate('/businesses')} className="p-1.5 rounded-lg hover:bg-[#f1f5f9] text-[#64748b]">
+        <button onClick={() => navigate('/app/businesses')} className="p-1.5 rounded-lg hover:bg-[#f1f5f9] text-[#64748b]">
           <ArrowLeft size={20} />
         </button>
         <div className="flex-1">
@@ -69,7 +69,7 @@ export function BusinessDetailPage() {
         </div>
         <div className="flex gap-2">
           <Button variant="secondary" icon={<Pencil size={14} />} onClick={() => setEditOpen(true)} size="sm">Ndrysho</Button>
-          <Button icon={<ClipboardPlus size={14} />} onClick={() => navigate(`/inspections/new?businessId=${business.id}`)} size="sm">Inspektim i ri</Button>
+          <Button icon={<ClipboardPlus size={14} />} onClick={() => navigate(`/app/inspections/new?businessId=${business.id}`)} size="sm">Inspektim i ri</Button>
         </div>
       </div>
 
@@ -100,7 +100,7 @@ export function BusinessDetailPage() {
               title="Nuk ka inspektime"
               description="Nuk ka asnjë inspektim për këtë biznes"
               action={
-                <Button icon={<ClipboardPlus size={14} />} onClick={() => navigate(`/inspections/new?businessId=${business.id}`)}>
+                <Button icon={<ClipboardPlus size={14} />} onClick={() => navigate(`/app/inspections/new?businessId=${business.id}`)}>
                   Krijo inspektim të ri
                 </Button>
               }
@@ -121,7 +121,7 @@ export function BusinessDetailPage() {
                   {inspections.map((ins) => (
                     <tr
                       key={ins.id}
-                      onClick={() => navigate(`/inspections/${ins.id}`)}
+                      onClick={() => navigate(`/app/inspections/${ins.id}`)}
                       className="border-b border-[#f1f5f9] hover:bg-[#f8fafc] cursor-pointer transition-colors"
                     >
                       <td className="px-4 py-3 font-mono text-xs">{ins.serialNumber}</td>

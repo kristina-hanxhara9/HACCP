@@ -7,6 +7,7 @@ import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { initializeDefaults } from '@/lib/db';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { LoginPage } from '@/pages/LoginPage';
+import { LandingPage } from '@/pages/LandingPage';
 import { DashboardPage } from '@/pages/dashboard/DashboardPage';
 import { BusinessListPage } from '@/pages/businesses/BusinessListPage';
 import { BusinessDetailPage } from '@/pages/businesses/BusinessDetailPage';
@@ -28,7 +29,7 @@ const queryClient = new QueryClient({
 
 function AuthGuard({ children }: { children: React.ReactNode }) {
   const isAuthenticated = useAppStore((s) => s.isAuthenticated);
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  if (!isAuthenticated) return <Navigate to="/" replace />;
   return <>{children}</>;
 }
 
@@ -43,11 +44,13 @@ function AppRoutes() {
 
   return (
     <Routes>
+      <Route index element={<LandingPage />} />
       <Route
         path="/login"
-        element={isAuthenticated ? <Navigate to="/" replace /> : <LoginPage />}
+        element={isAuthenticated ? <Navigate to="/app" replace /> : <LoginPage />}
       />
       <Route
+        path="/app"
         element={
           <AuthGuard>
             <AppLayout />

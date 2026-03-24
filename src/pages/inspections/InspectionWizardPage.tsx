@@ -275,7 +275,7 @@ export function InspectionWizardPage() {
       }
 
       toast.success(status === 'draft' ? 'Draft u ruajt me sukses' : 'Inspektimi u finalizua');
-      navigate(status === 'perfunduar' ? `/reports/${inspection.id}` : '/inspections');
+      navigate(status === 'perfunduar' ? `/app/reports/${inspection.id}` : '/app/inspections');
     } catch (err) {
       toast.error('Gabim gjatë ruajtjes');
       console.error(err);
@@ -369,7 +369,7 @@ export function InspectionWizardPage() {
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center gap-3">
-        <button onClick={() => navigate('/inspections')} className="p-1.5 rounded-lg hover:bg-[#f1f5f9] text-[#64748b]">
+        <button onClick={() => navigate('/app/inspections')} className="p-1.5 rounded-lg hover:bg-[#f1f5f9] text-[#64748b]">
           <ArrowLeft size={20} />
         </button>
         <div>

@@ -57,7 +57,7 @@ export function ReportsPage() {
                     </td>
                     <td className="px-4 py-3 text-right">
                       <button
-                        onClick={() => navigate(`/reports/${ins.id}`)}
+                        onClick={() => navigate(`/app/reports/${ins.id}`)}
                         className="p-1.5 rounded-lg hover:bg-[#f1f5f9] text-[#64748b]"
                         title="Shiko raportin"
                       >
