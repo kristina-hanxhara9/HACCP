@@ -20,6 +20,86 @@ const NC_5 = 'demo-nc-training';
 
 const now = new Date().toISOString();
 
+// ─── Pre-written AI Report (must be before inspections) ──
+
+const AI_REPORT_DEMO = `## PËRMBLEDHJE EKZEKUTIVE
+
+Inspektimi i kryer në Restorant Vila Tirana më 15 Mars 2026 zbuloi një nivel të përgjithshëm mesatar rreziku. Biznesi demonstron praktika të mira bazë higjienike, por ka mangësi të rëndësishme në kontrollin e temperaturave, plotësimin e dokumentacionit dhe trajnimin e vazhdueshëm të stafit.
+
+## VLERËSIMI I RREZIKUT
+
+Niveli i rrezikut: MESATAR. Arsyetimi bazohet në kombinimin e faktorëve pozitivë (ambient i mirëmbajtur, kontroll i dëmtuesve efektiv) me gjetje negative (frigorifer jashtë kufirit termik, mungesa e regjistrave të temperaturave, certifikata shëndetësore të skaduara). Nëse gjetjet kritike nuk adresohen brenda afateve, rreziku mund të rritet në "I lartë".
+
+## GJETJET KRYESORE
+
+1. Frigoriferi 3 regjistroi 10°C — 2 gradë mbi kufirin maksimal (8°C), duke rrezikuar sigurinë e produkteve të ruajtura
+2. Dispenseri i sapunit bosh në tualetet e stafit — rrezik i drejtpërdrejtë për higjienën e duarve
+3. Mungojnë regjistrat e temperaturave — nuk ka evidencë të monitorimit ditor
+4. Mungon procedura e tërheqjes nga tregu (recall)
+5. Mungojnë regjistrat e trajnimit të stafit
+6. Certifikata shëndetësore: disa të skaduara tek 18 punonjës
+7. Pirja e duhanit u vërejt afër zonës së përgatitjes së ushqimit
+
+## ANALIZA E TEMPERATURAVE
+
+Nga 7 pika matjeje, 5 janë brenda kufijve të pranueshëm:
+- Frigorifer 1: 4°C (OK, kufiri -2 deri 8°C)
+- Frigorifer 2: 5°C (OK)
+- Frigorifer 3: 10°C (JASHTË KUFIRIT — devijim +2°C)
+- Ngrirës 1: -22°C (OK, kufiri deri -18°C)
+- Ngrirës 2: -19°C (OK)
+- Ambienti: 21°C (OK)
+- Zona prodhimit: 18°C (OK)
+
+Devijimi tek Frigoriferi 3 kërkon veprim të menjëhershëm: transferim i produkteve dhe riparim/zëvendësim i pajisjes. Fakti që regjistrat e temperaturave nuk plotësohen rregullisht nënkupton se devijime të ngjashme mund të kenë ndodhur pa u identifikuar.
+
+## GJENDJA E DOKUMENTACIONIT HACCP
+
+Plotësia e dokumentacionit: 6 nga 10 dokumente të pranishme (60%).
+
+Dokumente të pranishme: Plani HACCP, analiza e rreziqeve, CCP, procedurat e pastrimit, regjistrat e pastrimit, plani i kontrollit të dëmtuesve, regjistrat e pranimit.
+
+Dokumente që mungojnë ose janë të papërditësuara:
+- Regjistrat e temperaturave — nuk plotësohen rregullisht
+- Regjistrat e trajnimit të stafit — nuk ekzistojnë fare
+- Procedura e tërheqjes nga tregu — nuk ka procedurë të shkruar
+
+Procedura e pastrimit ka nevojë për përditësim (përditësimi i fundit: korrik 2025).
+
+## MOSPËRPUTHJET E IDENTIFIKUARA
+
+1. [I LARTË] Temperatura jashtë kufirit — Frigorifer 3 (10°C vs max 8°C) — Afati: 22 Mars 2026
+2. [MESATAR] Mungon sapuni në tualetet e stafit — Afati: 16 Mars 2026
+
+Të dyja mospërputhjet kërkojnë veprim korrigjues brenda afateve të caktuara. Mospërputhja e temperaturës ka prioritet më të lartë për shkak të ndikimit të drejtpërdrejtë në sigurinë ushqimore.
+
+## REKOMANDIMET
+
+Prioriteti 1 — Brenda 7 ditësh:
+- Riparimi ose zëvendësimi i Frigoriferit 3
+- Mbushja e dispenserit të sapunit dhe vendosja e kontrollit javor
+
+Prioriteti 2 — Brenda 14 ditësh:
+- Trajnim i stafit mbi higjienën personale dhe procedurën e larjes së duarve
+- Ndalim i rreptë i pirjes së duhanit afër zonave të punës
+
+Prioriteti 3 — Brenda 30 ditësh:
+- Krijimi i regjistrave ditore të temperaturave
+- Krijimi i regjistrave të trajnimit të stafit
+- Hartimi i procedurës së tërheqjes nga tregu
+- Përditësimi i procedurave të pastrimit
+- Rinovimi i certifikatave shëndetësore të skaduara
+
+## INFORMACION I PAMJAFTUESHËM
+
+- Nuk ka foto dokumentuese për mospërputhjet e identifikuara
+- Mungon historiku i inspektimeve të mëparshme për krahasim
+- Nuk u verifikua gjendja e certifikatës së kontrollit të dëmtuesve me kompaninë DDD
+
+## VLERËSIMI PËRFUNDIMTAR
+
+Restorant Vila Tirana demonstron angazhim bazë ndaj sigurisë ushqimore, por ka boshllëqe të dukshme në monitorimin e temperaturave dhe dokumentacionin HACCP. Adresimi i prioritar i frigoriferit problematik dhe plotësimi i regjistrave janë hapa kritikë për uljen e rrezikut. Me veprime korrigjuese brenda afateve, biznesi ka potencialin të arrijë nivel "I ulët" rreziku në inspektimin e ardhshëm të planifikuar për 15 qershor 2026.`;
+
 // ─── Businesses ──────────────────────────────────────────
 
 const businesses: (Business & { id: string })[] = [
@@ -505,86 +585,6 @@ const activityLog: (ActivityLogEntry & { id: string })[] = [
   { id: 'demo-log-11', type: 'nc_resolved', description: 'Mospërputhja "Trajnimi i stafit" u zgjidh (Furrë Buke Dita)', entityId: NC_5, entityType: 'nonconformance', timestamp: '2026-02-15T15:00:00.000Z' },
   { id: 'demo-log-12', type: 'inspection_created', description: 'Inspektimi HACCP-2026-0004 u krijua (Minimarket Fresh) — draft', entityId: INS_4, entityType: 'inspection', timestamp: '2026-04-16T10:00:00.000Z' },
 ];
-
-// ─── Pre-written AI Report ───────────────────────────────
-
-const AI_REPORT_DEMO = `## PËRMBLEDHJE EKZEKUTIVE
-
-Inspektimi i kryer në Restorant Vila Tirana më 15 Mars 2026 zbuloi një nivel të përgjithshëm mesatar rreziku. Biznesi demonstron praktika të mira bazë higjienike, por ka mangësi të rëndësishme në kontrollin e temperaturave, plotësimin e dokumentacionit dhe trajnimin e vazhdueshëm të stafit.
-
-## VLERËSIMI I RREZIKUT
-
-Niveli i rrezikut: MESATAR. Arsyetimi bazohet në kombinimin e faktorëve pozitivë (ambient i mirëmbajtur, kontroll i dëmtuesve efektiv) me gjetje negative (frigorifer jashtë kufirit termik, mungesa e regjistrave të temperaturave, certifikata shëndetësore të skaduara). Nëse gjetjet kritike nuk adresohen brenda afateve, rreziku mund të rritet në "I lartë".
-
-## GJETJET KRYESORE
-
-1. Frigoriferi 3 regjistroi 10°C — 2 gradë mbi kufirin maksimal (8°C), duke rrezikuar sigurinë e produkteve të ruajtura
-2. Dispenseri i sapunit bosh në tualetet e stafit — rrezik i drejtpërdrejtë për higjienën e duarve
-3. Mungojnë regjistrat e temperaturave — nuk ka evidencë të monitorimit ditor
-4. Mungon procedura e tërheqjes nga tregu (recall)
-5. Mungojnë regjistrat e trajnimit të stafit
-6. Certifikata shëndetësore: disa të skaduara tek 18 punonjës
-7. Pirja e duhanit u vërejt afër zonës së përgatitjes së ushqimit
-
-## ANALIZA E TEMPERATURAVE
-
-Nga 7 pika matjeje, 5 janë brenda kufijve të pranueshëm:
-- Frigorifer 1: 4°C (OK, kufiri -2 deri 8°C)
-- Frigorifer 2: 5°C (OK)
-- Frigorifer 3: 10°C (JASHTË KUFIRIT — devijim +2°C)
-- Ngrirës 1: -22°C (OK, kufiri deri -18°C)
-- Ngrirës 2: -19°C (OK)
-- Ambienti: 21°C (OK)
-- Zona prodhimit: 18°C (OK)
-
-Devijimi tek Frigoriferi 3 kërkon veprim të menjëhershëm: transferim i produkteve dhe riparim/zëvendësim i pajisjes. Fakti që regjistrat e temperaturave nuk plotësohen rregullisht nënkupton se devijime të ngjashme mund të kenë ndodhur pa u identifikuar.
-
-## GJENDJA E DOKUMENTACIONIT HACCP
-
-Plotësia e dokumentacionit: 6 nga 10 dokumente të pranishme (60%).
-
-Dokumente të pranishme: Plani HACCP, analiza e rreziqeve, CCP, procedurat e pastrimit, regjistrat e pastrimit, plani i kontrollit të dëmtuesve, regjistrat e pranimit.
-
-Dokumente që mungojnë ose janë të papërditësuara:
-- Regjistrat e temperaturave — nuk plotësohen rregullisht
-- Regjistrat e trajnimit të stafit — nuk ekzistojnë fare
-- Procedura e tërheqjes nga tregu — nuk ka procedurë të shkruar
-
-Procedura e pastrimit ka nevojë për përditësim (përditësimi i fundit: korrik 2025).
-
-## MOSPËRPUTHJET E IDENTIFIKUARA
-
-1. [I LARTË] Temperatura jashtë kufirit — Frigorifer 3 (10°C vs max 8°C) — Afati: 22 Mars 2026
-2. [MESATAR] Mungon sapuni në tualetet e stafit — Afati: 16 Mars 2026
-
-Të dyja mospërputhjet kërkojnë veprim korrigjues brenda afateve të caktuara. Mospërputhja e temperaturës ka prioritet më të lartë për shkak të ndikimit të drejtpërdrejtë në sigurinë ushqimore.
-
-## REKOMANDIMET
-
-Prioriteti 1 — Brenda 7 ditësh:
-- Riparimi ose zëvendësimi i Frigoriferit 3
-- Mbushja e dispenserit të sapunit dhe vendosja e kontrollit javor
-
-Prioriteti 2 — Brenda 14 ditësh:
-- Trajnim i stafit mbi higjienën personale dhe procedurën e larjes së duarve
-- Ndalim i rreptë i pirjes së duhanit afër zonave të punës
-
-Prioriteti 3 — Brenda 30 ditësh:
-- Krijimi i regjistrave ditore të temperaturave
-- Krijimi i regjistrave të trajnimit të stafit
-- Hartimi i procedurës së tërheqjes nga tregu
-- Përditësimi i procedurave të pastrimit
-- Rinovimi i certifikatave shëndetësore të skaduara
-
-## INFORMACION I PAMJAFTUESHËM
-
-- Nuk ka foto dokumentuese për mospërputhjet e identifikuara
-- Mungon historiku i inspektimeve të mëparshme për krahasim
-- Nuk u verifikua gjendja e certifikatës së kontrollit të dëmtuesve me kompaninë DDD
-
-## VLERËSIMI PËRFUNDIMTAR
-
-Restorant Vila Tirana demonstron angazhim bazë ndaj sigurisë ushqimore, por ka boshllëqe të dukshme në monitorimin e temperaturave dhe dokumentacionin HACCP. Adresimi i prioritar i frigoriferit problematik dhe plotësimi i regjistrave janë hapa kritikë për uljen e rrezikut. Me veprime korrigjuese brenda afateve, biznesi ka potencialin të arrijë nivel "I ulët" rreziku në inspektimin e ardhshëm të planifikuar për 15 qershor 2026.`;
 
 // ─── Seed Function ───────────────────────────────────────
 
