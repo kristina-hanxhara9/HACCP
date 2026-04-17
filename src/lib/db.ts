@@ -1,5 +1,6 @@
 import Dexie, { type EntityTable } from 'dexie';
 import type { Business, Inspection, NonConformance, ActivityLogEntry, Settings } from '@/types';
+import { seedDemoData } from './seedDemo';
 
 class HACCPDatabase extends Dexie {
   businesses!: EntityTable<Business, 'id'>;
@@ -43,7 +44,7 @@ export async function initializeDefaults() {
         address: 'Shqipëri',
         website: '',
       },
-      password: 'haccp2026',
+      password: 'Pallati629.',
       apiKey: '',
     });
   }
@@ -55,6 +56,9 @@ export async function initializeDefaults() {
   if (!localStorage.getItem('haccp_serial_year')) {
     localStorage.setItem('haccp_serial_year', new Date().getFullYear().toString());
   }
+
+  // Seed demo data on first visit
+  await seedDemoData();
 }
 
 export function generateSerialNumber(): string {
